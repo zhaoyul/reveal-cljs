@@ -6,7 +6,7 @@
 
   :min-lein-version "2.6.1"
 
-  :dependencies [[org.clojure/clojure "1.9.0"]
+  :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.9.946"]
                  [org.clojure/core.async "0.3.465" :exclusions [org.clojure/tools.reader]]
                  [hiccups "0.3.0"]]
@@ -101,10 +101,10 @@
                    ;; need to add dev source path here to get user.clj loaded
                    :source-paths ["src" "dev"]
                    ;; for CIDER
-                   ;; :plugins [[cider/cider-nrepl "0.12.0"]]
+                   :plugins [[cider/cider-nrepl "0.15.0-snapshot"]]
                    :repl-options {; for nREPL dev you really need to limit output
                                   :init (set! *print-length* 50)
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}}}
 
-  :jvm-opts ["--add-modules" "java.xml.bind"]
-)
+  ;; :jvm-opts ["--add-modules" "java.xml.bind"]
+  )

@@ -13,6 +13,7 @@
                   :slideNumber false})
 
 
+
 ;;;; You do not need to change anything below this comment
 
 (defn convert
@@ -27,7 +28,22 @@
   (set! (.. (.getElementById js/document "slides") -innerHTML) (convert))
   (.initialize js/Reveal options)
   (.setState js/Reveal (.getState js/Reveal)))
+
 (main)
 
-(defn on-js-reload []
-  (main))
+(defn theme [new-theme]
+  (let [doc js/document
+        theme (.getElementById js/document "theme")
+        head (.-head doc)
+        base "bower_components/reveal.js/css/theme/"
+        link (.createElement doc "link")
+        link-url (str base new-theme ".css")]
+    (set! (.-rel link) "stylesheet")
+    (set! (.-href link) link-url)
+    (set! (.-id link) "theme")
+    (print theme)
+    (.appendChild head link)))
+
+(defn on-js-reload [])
+  ;(theme "black"))
+  ;(main))
